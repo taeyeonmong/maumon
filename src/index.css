@@ -1,0 +1,210 @@
+/* 마음온 brand tokens */
+:root {
+  --mo-blue: #1a5fa8;
+  --mo-blue-light: #e8f1fa;
+  --mo-blue-border: #cfe2f5;
+  --mo-blue-dark: #14467a;
+  --mo-green: #2f9e6b;
+  --mo-green-light: #e3f4ec;
+  --mo-green-border: #bfe3d0;
+  --mo-orange: #e07b2a;
+  --mo-orange-light: #fbe7d6;
+  --mo-red: #dc2626;
+  --mo-red-light: #fde8e8;
+  --mo-dark-red: #7f1d1d;
+  --mo-gray-text: #1f2937;
+  --mo-gray-sub: #6b7280;
+  --mo-gray-border: #e5e7eb;
+  --mo-gray-bg: #f4f5f7;
+  --mo-gray-light: #f3f4f6;
+  --color-accent: var(--mo-blue);
+  --color-on-accent: #ffffff;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #e8eaed;
+  min-height: 100vh;
+  font-family: 'Pretendard Variable', Pretendard, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  display: flex;
+  justify-content: center;
+  padding: 40px 0;
+  min-height: 100vh;
+}
+
+/* Animations */
+@keyframes mo-pulse {
+  0% { transform: scale(1); opacity: .65; }
+  100% { transform: scale(1.55); opacity: 0; }
+}
+@keyframes mo-wave {
+  0%, 100% { transform: scaleY(.3); }
+  50% { transform: scaleY(1); }
+}
+@keyframes mo-spin {
+  to { transform: rotate(360deg); }
+}
+@keyframes s02-count {
+  from { width: 100%; }
+  to { width: 8%; }
+}
+.s02-counting { animation: s02-count 3s linear forwards; }
+
+/* App frame */
+.mo-frame {
+  width: 768px;
+  position: relative;
+}
+
+/* Screen */
+.mo-screen {
+  width: 768px;
+  min-height: 1024px;
+  border-radius: 44px;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 12px 34px rgba(0,0,0,.12);
+}
+
+/* Status bar */
+.mo-statusbar {
+  height: 44px;
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 36px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+/* SOS button */
+.mo-sos {
+  position: absolute;
+  top: 60px;
+  right: 36px;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 800;
+  font-size: 17px;
+  padding: 0 18px;
+  height: 52px;
+  border-radius: 999px;
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+/* Back button */
+.mo-back {
+  width: 52px;
+  height: 52px;
+  border-radius: 999px;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex: none;
+}
+
+/* Primary button */
+.mo-btn-primary {
+  height: 84px;
+  border-radius: 18px;
+  background: var(--mo-blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(26,95,168,.3);
+  font-size: 25px;
+  font-weight: 800;
+  color: #fff;
+  border: none;
+  width: 100%;
+}
+.mo-btn-primary:hover { opacity: .9; }
+
+/* Wave bars */
+.mo-wave-bar {
+  width: 8px;
+  height: 60px;
+  border-radius: 8px;
+  transform-origin: center;
+}
+
+/* Font segment */
+.mo-fontseg {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 999px;
+  padding: 6px 8px;
+  box-shadow: 0 1px 3px rgba(0,0,0,.05);
+}
+.mo-fontseg-btn {
+  min-width: 48px;
+  height: 46px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  line-height: 1;
+  border: none;
+  background: transparent;
+  transition: background .15s, color .15s;
+}
+.mo-fontseg-btn.active {
+  background: var(--mo-blue);
+  color: #fff;
+}
+.mo-fontseg-btn:not(.active) {
+  color: #6b7280;
+}
+
+/* Card */
+.mo-card {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+/* Toggle switch */
+.mo-toggle {
+  width: 64px;
+  height: 36px;
+  border-radius: 999px;
+  position: relative;
+  flex: none;
+}
+.mo-toggle::after {
+  content: '';
+  position: absolute;
+  top: 3px;
+  width: 30px;
+  height: 30px;
+  border-radius: 999px;
+  background: #fff;
+}
+.mo-toggle.on { background: var(--mo-blue); }
+.mo-toggle.on::after { right: 3px; }
+.mo-toggle.off { background: #e5e7eb; }
+.mo-toggle.off::after { left: 3px; }
