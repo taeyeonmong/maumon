@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { Check, AlarmClock, Home } from 'lucide-react';
+import { Check, CalendarHeart, Home } from 'lucide-react';
 import StatusBar from '../components/StatusBar';
 
 export default function S06_Complete({ navigate, active }) {
@@ -38,11 +38,11 @@ export default function S06_Complete({ navigate, active }) {
             width: 64, height: 64, borderRadius: 16, background: '#e8f1fa',
             display: 'flex', alignItems: 'center', justifyContent: 'center', flex: 'none',
           }}>
-            <AlarmClock size={34} color="#1a5fa8" />
+            <CalendarHeart size={34} color="#1a5fa8" />
           </span>
           <div style={{ textAlign: 'left' }}>
-            <div style={{ fontSize: 17, color: '#6b7280', fontWeight: 600 }}>다음 안부콜</div>
-            <div style={{ fontSize: 24, fontWeight: 800, color: '#1f2937', letterSpacing: '-0.02em' }}>오후 4시 · 외출 안부</div>
+            <div style={{ fontSize: 17, color: '#6b7280', fontWeight: 600 }}>오늘의 감정</div>
+            <div style={{ fontSize: 24, fontWeight: 800, color: '#1f2937', letterSpacing: '-0.02em' }}>감정 기록에 저장했어요</div>
           </div>
         </div>
       </div>

@@ -1,6 +1,5 @@
 import { Laugh, Smile, Meh, Frown, Mic } from 'lucide-react';
 import StatusBar from '../components/StatusBar';
-import SosBtn from '../components/SosBtn';
 
 const emotions = [
   { icon: <Laugh size={34} color="#1a5fa8" />, label: '매우 좋아요', bg: '#e8f1fa', target: 'S06', border: '1.5px solid #e5e7eb', color: '#1f2937', bold: false },
@@ -12,7 +11,6 @@ const emotions = [
 export default function S05_EmotionCheck({ navigate }) {
   return (
     <div className="mo-screen" style={{ background: '#f4f5f7', border: '1px solid #cdd2d8' }}>
-      <SosBtn onClick={() => navigate('S08')} dark />
       <StatusBar time="9:58" />
       <div style={{ flex: 1, display: 'flex', flexDirection: 'column', padding: '44px 44px 56px' }}>
         <div style={{ textAlign: 'center', marginBottom: 40, paddingRight: 120 }}>

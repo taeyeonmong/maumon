@@ -1,5 +1,6 @@
 import { useState } from 'react';
 
+import S00_Push from './screens/S00_Push';
 import S01_Home from './screens/S01_Home';
 import S02_CallEntry from './screens/S02_CallEntry';
 import S03_AITalking from './screens/S03_AITalking';
@@ -31,7 +32,7 @@ import S19_Notifications from './screens/S19_Notifications';
 import S20_Privacy from './screens/S20_Privacy';
 
 export default function App() {
-  const [currentScreen, setCurrentScreen] = useState('S16');
+  const [currentScreen, setCurrentScreen] = useState('S01');
   const [fontMode, setFontMode] = useState('보통');
 
   const navigate = (id) => setCurrentScreen(id);
@@ -39,6 +40,7 @@ export default function App() {
   const props = { navigate, fontMode, setFontMode, active: true };
 
   const screens = {
+    S00: <S00_Push {...props} />,
     S01: <S01_Home {...props} />,
     S02: <S02_CallEntry {...props} />,
     S03: <S03_AITalking {...props} />,

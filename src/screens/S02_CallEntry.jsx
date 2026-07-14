@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { Bot, Siren, Play } from 'lucide-react';
+import { Bot, Play } from 'lucide-react';
 import StatusBar from '../components/StatusBar';
 
 export default function S02_CallEntry({ navigate, active }) {
@@ -20,13 +20,6 @@ export default function S02_CallEntry({ navigate, active }) {
 
   return (
     <div className="mo-screen" style={{ background: '#14467a', border: '1px solid #0e3157' }}>
-      <button
-        className="mo-sos"
-        onClick={() => navigate('S08')}
-        style={{ background: '#fff', color: '#dc2626', boxShadow: '0 3px 8px rgba(0,0,0,.25)' }}
-      >
-        <Siren size={22} color="#dc2626" />SOS
-      </button>
       <StatusBar dark time="9:53" />
       <div style={{
         flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center',
@@ -53,11 +46,11 @@ export default function S02_CallEntry({ navigate, active }) {
           </span>
         </div>
         <div style={{ fontSize: 38, fontWeight: 800, color: '#fff', letterSpacing: '-0.03em', lineHeight: 1.3 }}>
-          홍길동님,<br />점심 안부 드릴게요
+          홍길동님,<br />외출 다녀오셨네요!
         </div>
         <div style={{ width: 420 }}>
           <div style={{ fontSize: 18, color: 'rgba(255,255,255,.85)', marginBottom: 12, fontWeight: 500 }}>
-            3초 후 자동으로 시작해요
+            잠시만요, 대화를 연결하고 있어요
           </div>
           <div style={{ width: '100%', height: 14, borderRadius: 999, background: 'rgba(255,255,255,.25)', overflow: 'hidden' }}>
             <div ref={barRef} style={{ height: '100%', borderRadius: 999, background: '#fff', width: '100%' }} />

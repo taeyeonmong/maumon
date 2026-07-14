@@ -1,11 +1,9 @@
-import { UserRound, Siren, CalendarPlus } from 'lucide-react';
+import { UserRound, CalendarPlus } from 'lucide-react';
 import StatusBar from '../components/StatusBar';
-import SosBtn from '../components/SosBtn';
 
 export default function S07_CounselingConnect({ navigate }) {
   return (
     <div className="mo-screen" style={{ background: '#fbe7d6', border: '1px solid #f0cba3' }}>
-      <SosBtn onClick={() => navigate('S08')} dark />
       <StatusBar time="10:01" />
       <div style={{
         flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center',
@@ -21,6 +19,9 @@ export default function S07_CounselingConnect({ navigate }) {
         <div style={{ fontSize: 34, fontWeight: 800, color: '#1f2937', letterSpacing: '-0.03em', lineHeight: 1.35 }}>
           상담사 선생님과<br />이야기 나눠보시겠어요?
         </div>
+        <div style={{ fontSize: 20, color: '#8a5a2b', fontWeight: 600, lineHeight: 1.5, marginTop: -12 }}>
+          신청하시면 이닛케어 상담사가<br />전화로 연락드려 일정을 잡아드려요
+        </div>
         <div style={{ width: 480, display: 'flex', flexDirection: 'column', gap: 16, marginTop: 8 }}>
           <div
             onClick={() => navigate('S09n')}
@@ -31,7 +32,7 @@ export default function S07_CounselingConnect({ navigate }) {
             }}
           >
             <CalendarPlus size={30} color="#fff" />
-            <span style={{ fontSize: 25, fontWeight: 800, color: '#fff' }}>상담 예약하기</span>
+            <span style={{ fontSize: 25, fontWeight: 800, color: '#fff' }}>상담 신청하기</span>
           </div>
         </div>
         <span

@@ -1,19 +1,25 @@
-import { Bot, CalendarCheck, Sparkles, History, Plus, Megaphone, Bell, Settings, ChevronRight } from 'lucide-react';
+import { Bot, CalendarCheck, Sparkles, CalendarHeart, Megaphone, Bell, Settings, MessageCircle } from 'lucide-react';
 import StatusBar from '../components/StatusBar';
 
 export default function S01_Home({ navigate, fontMode, setFontMode }) {
-  const sizes = { '보통': [16, 22, 28], '크게': [19, 27, 34], '아주 크게': [23, 33, 41] };
+  // 카드 크기는 고정, 글씨 크기만 모드에 따라 커진다.
+  const sizes = { '보통': [16, 22, 28], '크게': [18, 25, 32], '아주 크게': [20, 28, 36] };
   const [s1, s2, s3] = sizes[fontMode] || sizes['보통'];
 
+  const quick = [
+    { id: 'S09', icon: <CalendarCheck size={30} color="#1a5fa8" />, title: '상담 신청' },
+    { id: 'S11', icon: <Sparkles size={30} color="#1a5fa8" />, title: '오늘의 활동' },
+    { id: 'S12', icon: <CalendarHeart size={30} color="#1a5fa8" />, title: '감정 기록' },
+  ];
+
   return (
-    <div className="mo-screen" style={{ background: '#f4f5f7', border: '1px solid #cdd2d8' }}>
+    <div className="mo-screen" style={{ height: 1024, background: '#f4f5f7', border: '1px solid #cdd2d8' }}>
       <StatusBar />
-      <div style={{ flex: 1, display: 'flex', flexDirection: 'column', padding: '28px 32px', gap: 22 }}>
+      <div style={{ flex: 1, minHeight: 0, display: 'flex', flexDirection: 'column', padding: '22px 28px 24px', gap: 18 }}>
         {/* Header */}
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+        <div style={{ flex: 'none', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <span style={{ fontSize: 30, fontWeight: 800, color: '#1a5fa8', letterSpacing: '-0.03em' }}>마음온</span>
           <span style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
-            {/* Font size control */}
             <span className="mo-fontseg">
               <span style={{ fontSize: 14, fontWeight: 600, color: '#6b7280', padding: '0 4px 0 6px' }}>글씨</span>
               {['보통', '크게', '아주 크게'].map((m, i) => (
@@ -36,94 +42,79 @@ export default function S01_Home({ navigate, fontMode, setFontMode }) {
           </span>
         </div>
 
-        {/* AI Call card */}
+        {/* 안부콜 히어로 카드 — 캐릭터 강조, 탭하면 대화 시작 (센서 정보는 노출하지 않음) */}
         <div
-          onClick={() => navigate('S02')}
+          onClick={() => navigate('S00')}
           style={{
-            cursor: 'pointer', position: 'relative', background: '#fff',
-            border: '1px solid #e5e7eb', borderRadius: 24, padding: 26,
-            display: 'flex', alignItems: 'center', gap: 22,
-            boxShadow: '0 4px 14px rgba(26,95,168,.07)',
+            flex: 1, minHeight: 0, cursor: 'pointer', position: 'relative', overflow: 'hidden',
+            background: 'linear-gradient(160deg, #1a5fa8 0%, #14467a 100%)',
+            borderRadius: 28, padding: '28px 32px',
+            display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center',
+            boxShadow: '0 12px 30px rgba(26,95,168,.32)',
           }}
         >
-          <span style={{
-            width: 84, height: 84, borderRadius: 999, background: '#e8f1fa',
-            border: '2px solid #1a5fa8', display: 'flex', alignItems: 'center',
-            justifyContent: 'center', flex: 'none',
+          {/* 큰 캐릭터 */}
+          <div style={{ position: 'relative', width: 230, height: 230, display: 'flex', alignItems: 'center', justifyContent: 'center', flex: 'none' }}>
+            <span style={{ position: 'absolute', inset: 0, borderRadius: 999, border: '4px solid rgba(255,255,255,.4)', animation: 'mo-pulse 1.8s ease-out infinite' }} />
+            <span style={{ position: 'absolute', inset: 0, borderRadius: 999, border: '4px solid rgba(255,255,255,.4)', animation: 'mo-pulse 1.8s ease-out infinite', animationDelay: '.9s' }} />
+            <span style={{
+              width: 188, height: 188, borderRadius: 999, background: 'rgba(255,255,255,.16)',
+              border: '3px solid rgba(255,255,255,.6)', display: 'flex', alignItems: 'center', justifyContent: 'center',
+            }}>
+              <Bot size={110} color="#fff" />
+            </span>
+          </div>
+
+          {/* 문구 */}
+          <div style={{ fontSize: s3, fontWeight: 800, color: '#fff', letterSpacing: '-0.02em', lineHeight: 1.35, marginTop: 24 }}>
+            홍길동님, 날씨가 많이 덥죠?<br />집에 돌아오셨으니 잠깐 대화 나눠요
+          </div>
+
+          {/* CTA */}
+          <div style={{
+            marginTop: 24, width: '100%', maxWidth: 560, height: 92, borderRadius: 20, background: '#fff', flex: 'none',
+            display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 12,
+            boxShadow: '0 6px 16px rgba(0,0,0,.15)',
           }}>
-            <Bot size={46} color="#1a5fa8" />
-          </span>
-          <div style={{ flex: 1 }}>
-            <div style={{ fontSize: s1, color: '#6b7280', fontWeight: 600 }}>AI 안부콜</div>
-            <div style={{ fontSize: s2, fontWeight: 800, color: '#1f2937', letterSpacing: '-0.02em', marginTop: 2 }}>
-              다음 안부콜 <span style={{ color: '#1a5fa8' }}>12분</span> 후
-            </div>
-            <div style={{ fontSize: s1, color: '#6b7280', marginTop: 4 }}>오늘 대화 2번 · 점심 안부 예정</div>
+            <MessageCircle size={34} color="#1a5fa8" />
+            <span style={{ fontSize: s2, fontWeight: 800, color: '#1a5fa8' }}>대화 시작하기</span>
           </div>
         </div>
 
-        {/* Quick menu grid */}
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 18 }}>
-          {[
-            { id: 'S09', icon: <CalendarCheck size={32} color="#1a5fa8" />, title: '상담 예약', sub: '예약 1건 · D-2' },
-            { id: 'S11', icon: <Sparkles size={32} color="#1a5fa8" />, title: '오늘의 활동', sub: '추억 퀴즈 외 2개' },
-            { id: 'S12', icon: <History size={32} color="#1a5fa8" />, title: '대화 기록', sub: '최근 7일' },
-          ].map(({ id, icon, title, sub }) => (
+        {/* 퀵메뉴 (한 줄 3개) */}
+        <div style={{ flex: 'none', display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 14 }}>
+          {quick.map(({ id, icon, title }) => (
             <div
               key={id}
               onClick={() => navigate(id)}
               style={{
                 cursor: 'pointer', background: '#fff', border: '1px solid #e5e7eb',
-                borderRadius: 20, height: 196, padding: 24,
+                borderRadius: 20, height: 160, padding: 20,
                 display: 'flex', flexDirection: 'column', justifyContent: 'space-between',
                 boxShadow: '0 3px 10px rgba(0,0,0,.04)',
               }}
             >
-              <span style={{
-                width: 60, height: 60, borderRadius: 16, background: '#e8f1fa',
-                display: 'flex', alignItems: 'center', justifyContent: 'center',
-              }}>
+              <span style={{ width: 60, height: 60, borderRadius: 16, background: '#e8f1fa', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 {icon}
               </span>
-              <div>
-                <div style={{ fontSize: s2 - 4, fontWeight: 700, color: '#1f2937', letterSpacing: '-0.02em' }}>{title}</div>
-                <div style={{ fontSize: s1, color: '#6b7280', marginTop: 2 }}>{sub}</div>
-              </div>
+              <div style={{ fontSize: s1 + 4, fontWeight: 800, color: '#1f2937', letterSpacing: '-0.02em' }}>{title}</div>
             </div>
           ))}
-          {/* Placeholder */}
-          <div style={{
-            background: '#f9fafb', border: '1.5px dashed #d1d5db', borderRadius: 20,
-            height: 196, padding: 24, display: 'flex', flexDirection: 'column',
-            justifyContent: 'space-between', opacity: .7,
-          }}>
-            <span style={{
-              width: 60, height: 60, borderRadius: 16, background: '#f3f4f6',
-              display: 'flex', alignItems: 'center', justifyContent: 'center',
-            }}>
-              <Plus size={32} color="#9ca3af" />
-            </span>
-            <div>
-              <div style={{ fontSize: s2 - 4, fontWeight: 700, color: '#9ca3af', letterSpacing: '-0.02em' }}>준비 중</div>
-              <div style={{ fontSize: s1, color: '#d1d5db', marginTop: 2 }}>곧 추가될 기능</div>
-            </div>
-          </div>
         </div>
 
-        {/* Notice banner */}
+        {/* 공지 배너 */}
         <div
           onClick={() => navigate('S14l')}
           style={{
-            cursor: 'pointer', marginTop: 'auto', background: '#e8f1fa',
-            border: '1px solid #cfe2f5', borderRadius: 16, height: 64,
+            flex: 'none', cursor: 'pointer', background: '#e8f1fa',
+            border: '1px solid #cfe2f5', borderRadius: 16, height: 62,
             padding: '0 22px', display: 'flex', alignItems: 'center', gap: 14,
           }}
         >
-          <Megaphone size={24} color="#1a5fa8" />
-          <span style={{ flex: 1, fontSize: s1, color: '#1f2937', fontWeight: 500 }}>
+          <Megaphone size={24} color="#1a5fa8" style={{ flex: 'none' }} />
+          <span style={{ flex: 1, fontSize: s1, color: '#1f2937', fontWeight: 500, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
             경로당 무더위 쉼터 운영 안내 (6/20~)
           </span>
-          <ChevronRight size={24} color="#6b7280" />
         </div>
       </div>
     </div>

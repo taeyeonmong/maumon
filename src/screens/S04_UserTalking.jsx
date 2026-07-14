@@ -1,4 +1,4 @@
-import { Ear, PhoneCall, PhoneOff, Siren, Timer, Mic } from 'lucide-react';
+import { Ear, PhoneCall, PhoneOff, Timer, Mic } from 'lucide-react';
 import StatusBar from '../components/StatusBar';
 import WaveBar from '../components/WaveBar';
 
@@ -8,29 +8,17 @@ export default function S04_UserTalking({ navigate }) {
       <StatusBar time="9:54" />
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '8px 32px 0' }}>
         <span style={{ display: 'flex', alignItems: 'center', gap: 10, fontSize: 20, fontWeight: 700, color: '#1f2937' }}>
-          <PhoneCall size={24} color="#1a5fa8" />점심 안부콜
+          <PhoneCall size={24} color="#1a5fa8" />외출 후 안부콜
         </span>
-        <span style={{ display: 'flex', alignItems: 'center', gap: 18 }}>
-          <span
-            onClick={() => navigate('S01')}
-            style={{
-              cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 6,
-              background: '#fee2e2', border: '1.5px solid #dc2626', color: '#dc2626',
-              fontWeight: 700, fontSize: 17, padding: '0 16px', height: 46, borderRadius: 12,
-            }}
-          >
-            <PhoneOff size={20} color="#dc2626" />종료
-          </span>
-          <span
-            onClick={() => navigate('S08')}
-            style={{
-              cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 6,
-              background: '#dc2626', color: '#fff', fontWeight: 800, fontSize: 16,
-              padding: '0 14px', height: 46, borderRadius: 999,
-            }}
-          >
-            <Siren size={20} color="#fff" />SOS
-          </span>
+        <span
+          onClick={() => navigate('S01')}
+          style={{
+            cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 6,
+            background: '#fee2e2', border: '1.5px solid #dc2626', color: '#dc2626',
+            fontWeight: 700, fontSize: 17, padding: '0 16px', height: 46, borderRadius: 12,
+          }}
+        >
+          <PhoneOff size={20} color="#dc2626" />종료
         </span>
       </div>
       <div style={{
