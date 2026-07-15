@@ -48,7 +48,12 @@ export default function S18_Terms({ navigate }) {
                 <div style={{ fontSize: 20, fontWeight: 700, color: '#1f2937' }}>{label}</div>
                 <div style={{ fontSize: 15, color: subColor, marginTop: 2, fontWeight: 600 }}>{sub}</div>
               </div>
-              <span style={{ fontSize: 15, color: '#1a5fa8', fontWeight: 700, textDecoration: 'underline', cursor: 'pointer' }}>전문 보기</span>
+              <span
+                onClick={() => navigate('S20')}
+                style={{ fontSize: 15, color: '#1a5fa8', fontWeight: 700, textDecoration: 'underline', cursor: 'pointer' }}
+              >
+                전문 보기
+              </span>
             </div>
           ))}
         </div>

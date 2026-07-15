@@ -1,4 +1,5 @@
-import { Laugh, Smile, Meh, Frown, ChevronLeft, ChevronRight } from 'lucide-react';
+import { useState } from 'react';
+import { Laugh, Smile, Meh, Frown, ChevronLeft, ChevronRight, CalendarX } from 'lucide-react';
 import StatusBar from '../components/StatusBar';
 import BackBtn from '../components/BackBtn';
 
@@ -44,8 +45,10 @@ const FIRST_OFFSET = 3; // 2026-07-01 = 수요일
 const DAYS = 31;
 const TODAY = 14;
 
+const weekday = (day) => WEEK[(FIRST_OFFSET + day - 1) % 7];
+
 export default function S12_History({ navigate }) {
-  const selected = TODAY;
+  const [selected, setSelected] = useState(TODAY);
   const cells = [...Array(FIRST_OFFSET).fill(null), ...Array.from({ length: DAYS }, (_, i) => i + 1)];
   const selCalls = records[selected] || [];
 
@@ -94,12 +97,13 @@ export default function S12_History({ navigate }) {
               return (
                 <div
                   key={day}
+                  onClick={() => setSelected(day)}
                   style={{
                     height: 74, borderRadius: 14, position: 'relative',
                     display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 3, paddingTop: 6,
                     background: isSel ? '#eef4fb' : 'transparent',
                     border: isSel ? '2px solid #1a5fa8' : '2px solid transparent',
-                    cursor: calls ? 'pointer' : 'default',
+                    cursor: 'pointer',
                   }}
                 >
                   <span style={{ fontSize: 14, fontWeight: isSel ? 800 : 600, color: isSel ? '#1a5fa8' : '#9ca3af' }}>{day}</span>
@@ -122,9 +126,20 @@ export default function S12_History({ navigate }) {
         {/* 선택한 날의 안부콜 목록 */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 12, flex: 1 }}>
           <div style={{ display: 'flex', alignItems: 'baseline', gap: 10 }}>
-            <span style={{ fontSize: 21, fontWeight: 800, color: '#1f2937' }}>7월 14일 (화) · 오늘</span>
-            <span style={{ fontSize: 16, color: '#6b7280', fontWeight: 600 }}>안부콜 {selCalls.length}번</span>
+            <span style={{ fontSize: 21, fontWeight: 800, color: '#1f2937' }}>
+              7월 {selected}일 ({weekday(selected)}){selected === TODAY ? ' · 오늘' : ''}
+            </span>
+            {selCalls.length > 0 && (
+              <span style={{ fontSize: 16, color: '#6b7280', fontWeight: 600 }}>안부콜 {selCalls.length}번</span>
+            )}
           </div>
+
+          {selCalls.length === 0 && (
+            <div style={{ background: '#fff', border: '1px dashed #d1d5db', borderRadius: 18, padding: '26px 20px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 12 }}>
+              <CalendarX size={26} color="#9ca3af" />
+              <span style={{ fontSize: 18, color: '#9ca3af', fontWeight: 600 }}>이 날은 안부콜 기록이 없어요</span>
+            </div>
+          )}
 
           {selCalls.map((c, i) => {
             const m = MOODS[c.mood];

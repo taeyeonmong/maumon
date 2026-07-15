@@ -32,12 +32,20 @@ import S19_Notifications from './screens/S19_Notifications';
 import S20_Privacy from './screens/S20_Privacy';
 
 export default function App() {
-  const [currentScreen, setCurrentScreen] = useState('S01');
+  // 방문 이력을 스택으로 유지해, 진입 경로가 여러 곳인 화면도 올바르게 뒤로 갈 수 있게 한다.
+  const [history, setHistory] = useState(['S01']);
   const [fontMode, setFontMode] = useState('보통');
 
-  const navigate = (id) => setCurrentScreen(id);
+  const currentScreen = history[history.length - 1];
+  const navigate = (id) =>
+    setHistory(h => {
+      if (id === h[h.length - 1]) return h;   // 같은 화면 중복 push 방지
+      if (id === 'S01') return ['S01'];       // 홈은 루트 — 스택 리셋
+      return [...h, id];
+    });
+  const goBack = () => setHistory(h => (h.length > 1 ? h.slice(0, -1) : ['S01']));
 
-  const props = { navigate, fontMode, setFontMode, active: true };
+  const props = { navigate, goBack, fontMode, setFontMode, active: true };
 
   const screens = {
     S00: <S00_Push {...props} />,

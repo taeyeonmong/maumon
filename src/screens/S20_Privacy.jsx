@@ -13,13 +13,13 @@ const sections = [
   },
 ];
 
-export default function S20_Privacy({ navigate }) {
+export default function S20_Privacy({ goBack }) {
   return (
     <div className="mo-screen" style={{ background: '#f4f5f7', border: '1px solid #cdd2d8' }}>
       <StatusBar />
       <div style={{ flex: 1, display: 'flex', flexDirection: 'column', padding: '18px 32px 32px', gap: 20 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
-          <BackBtn onClick={() => navigate('S18')} />
+          <BackBtn onClick={goBack} />
           <div style={{ flex: 1 }}>
             <div style={{ fontSize: 26, fontWeight: 800, color: '#1f2937', letterSpacing: '-0.02em' }}>개인정보처리방침</div>
             <div style={{ fontSize: 14, color: '#9ca3af', fontWeight: 500, marginTop: 2 }}>시행일: 2025년 1월 1일 · v1.0</div>
@@ -53,7 +53,7 @@ export default function S20_Privacy({ navigate }) {
         </div>
 
         <div
-          onClick={() => navigate('S18')}
+          onClick={goBack}
           className="mo-btn-primary"
           style={{ fontSize: 23 }}
         >

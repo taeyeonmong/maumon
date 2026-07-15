@@ -6,13 +6,13 @@ import BackBtn from '../components/BackBtn';
 const timePrefs = ['언제든 좋아요', '오전', '오후', '저녁'];
 const reasons = ['요즘 마음이 힘들어요', '자꾸 외롭고 우울해요', '건강이 걱정돼요', '그냥 이야기하고 싶어요'];
 
-export default function S09n_BookingForm({ navigate }) {
+export default function S09n_BookingForm({ navigate, goBack }) {
   return (
     <div className="mo-screen" style={{ background: '#f4f5f7', border: '1px solid #cdd2d8' }}>
       <StatusBar time="10:03" />
       <div style={{ flex: 1, display: 'flex', flexDirection: 'column', padding: '18px 32px 32px', gap: 22 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
-          <BackBtn onClick={() => navigate('S07')} />
+          <BackBtn onClick={goBack} />
           <span style={{ fontSize: 26, fontWeight: 800, color: '#1f2937', letterSpacing: '-0.02em' }}>상담 신청</span>
         </div>
 

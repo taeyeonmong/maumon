@@ -29,7 +29,7 @@ const notifications = [
   },
 ];
 
-export default function S19_Notifications({ navigate }) {
+export default function S19_Notifications({ navigate, goBack }) {
   const unreadCount = notifications.filter(n => n.unread).length;
 
   return (
@@ -37,7 +37,7 @@ export default function S19_Notifications({ navigate }) {
       <StatusBar />
       <div style={{ flex: 1, display: 'flex', flexDirection: 'column', padding: '18px 32px 32px', gap: 20 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
-          <BackBtn onClick={() => navigate('S13')} />
+          <BackBtn onClick={goBack} />
           <span style={{ fontSize: 26, fontWeight: 800, color: '#1f2937', letterSpacing: '-0.02em', flex: 1 }}>알림 수신내역</span>
           {unreadCount > 0 && (
             <span style={{ background: '#dc2626', color: '#fff', fontSize: 15, fontWeight: 800, padding: '4px 12px', borderRadius: 999 }}>
