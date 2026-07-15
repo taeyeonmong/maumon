@@ -62,7 +62,7 @@ export default function S13_Settings({ navigate }) {
         </div>
 
         <div style={{ textAlign: 'center', marginTop: 'auto' }}>
-          <span style={{ fontSize: 15, color: '#9ca3af', fontWeight: 500 }}>마음온 v1.0.0 · 이닛케어(주)</span>
+          <span style={{ fontSize: 15, color: '#9ca3af', fontWeight: 500 }}>마음온 v1.0.0</span>
         </div>
       </div>
     </div>

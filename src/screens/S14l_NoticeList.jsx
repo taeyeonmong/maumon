@@ -4,8 +4,8 @@ import BackBtn from '../components/BackBtn';
 
 const notices = [
   { tag: '긴급', tagBg: '#fde8e8', tagColor: '#dc2626', date: '2026. 6. 20', title: '경로당 무더위 쉼터 운영 안내', sub: '행복복지관 · 6/20~', unread: true },
-  { tag: '안내', tagBg: '#e8f1fa', tagColor: '#1a5fa8', date: '2026. 6. 15', title: '7월 상담 일정 변경 안내', sub: '이닛케어 심리상담팀', unread: true },
-  { tag: '안내', tagBg: '#f1f3f5', tagColor: '#9ca3af', date: '2026. 6. 1', title: '마음온 앱 v1.2 업데이트', sub: '이닛케어(주)', unread: false },
+  { tag: '안내', tagBg: '#e8f1fa', tagColor: '#1a5fa8', date: '2026. 6. 15', title: '7월 상담 일정 변경 안내', sub: '마음온 상담팀', unread: true },
+  { tag: '안내', tagBg: '#f1f3f5', tagColor: '#9ca3af', date: '2026. 6. 1', title: '마음온 앱 v1.2 업데이트', sub: '마음온 운영팀', unread: false },
 ];
 
 function SegmentControl({ activeTab, onChange }) {

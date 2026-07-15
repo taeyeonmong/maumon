@@ -20,7 +20,7 @@ export default function S07_CounselingConnect({ navigate }) {
           상담사 선생님과<br />이야기 나눠보시겠어요?
         </div>
         <div style={{ fontSize: 20, color: '#8a5a2b', fontWeight: 600, lineHeight: 1.5, marginTop: -12 }}>
-          신청하시면 이닛케어 상담사가<br />전화로 연락드려 일정을 잡아드려요
+          신청하시면 마음온 상담사가<br />전화로 연락드려 일정을 잡아드려요
         </div>
         <div style={{ width: 480, display: 'flex', flexDirection: 'column', gap: 16, marginTop: 8 }}>
           <div

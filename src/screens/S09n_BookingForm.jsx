@@ -2,9 +2,9 @@ import { Phone, Info, Pencil, Send } from 'lucide-react';
 import StatusBar from '../components/StatusBar';
 import BackBtn from '../components/BackBtn';
 
-// 앱에서는 '상담 신청'만 접수한다. 실제 일정은 이닛케어 상담사가 전화로 잡는다.
+// 앱에서는 '상담 신청'만 접수한다. 실제 일정은 마음온 상담사가 전화로 잡는다.
 const timePrefs = ['언제든 좋아요', '오전', '오후', '저녁'];
-const reasons = ['요즘 마음이 힘들어요', '외로움 · 우울', '건강 걱정', '그냥 이야기하고 싶어요'];
+const reasons = ['요즘 마음이 힘들어요', '자꾸 외롭고 우울해요', '건강이 걱정돼요', '그냥 이야기하고 싶어요'];
 
 export default function S09n_BookingForm({ navigate }) {
   return (
@@ -20,13 +20,15 @@ export default function S09n_BookingForm({ navigate }) {
         <div style={{ background: '#fbe7d6', border: '1.5px solid #f0cba3', borderRadius: 16, padding: '18px 20px', display: 'flex', gap: 12 }}>
           <Info size={24} color="#e07b2a" style={{ flex: 'none', marginTop: 2 }} />
           <span style={{ fontSize: 19, color: '#8a5a2b', fontWeight: 600, lineHeight: 1.5 }}>
-            신청서를 접수하면 <b>이닛케어 상담사가 직접 전화</b>를 드려서 편하신 시간으로 일정을 잡아드려요. 앱에서 시간을 정하지 않으셔도 돼요.
+            아래 상담 신청서를 제출해주시면 <b>마음온 상담사</b>가 직접 전화를 드려서 편하신 시간으로 일정을 잡아드릴게요.
           </span>
         </div>
 
-        {/* 연락받을 번호 */}
+        {/* 연락받을 휴대폰번호 (필수) */}
         <div>
-          <div style={{ fontSize: 20, fontWeight: 800, color: '#1f2937', marginBottom: 12 }}>연락받을 전화번호</div>
+          <div style={{ fontSize: 20, fontWeight: 800, color: '#1f2937', marginBottom: 12 }}>
+            연락받을 휴대폰번호 <span style={{ color: '#dc2626' }}>(필수)</span>
+          </div>
           <div style={{ background: '#fff', border: '1.5px solid #e5e7eb', borderRadius: 16, height: 72, padding: '0 20px', display: 'flex', alignItems: 'center', gap: 14 }}>
             <Phone size={26} color="#e07b2a" style={{ flex: 'none' }} />
             <span style={{ flex: 1, fontSize: 24, fontWeight: 700, color: '#1f2937' }}>010-1234-5678</span>
@@ -36,27 +38,29 @@ export default function S09n_BookingForm({ navigate }) {
           </div>
         </div>
 
-        {/* 통화 희망 시간대 (참고용) */}
+        {/* 희망하는 상담 시간대 (선택) */}
         <div>
-          <div style={{ fontSize: 20, fontWeight: 800, color: '#1f2937', marginBottom: 4 }}>통화 희망 시간대</div>
-          <div style={{ fontSize: 16, color: '#9ca3af', fontWeight: 500, marginBottom: 12 }}>상담사가 참고할 수 있게 알려주세요 (선택)</div>
+          <div style={{ fontSize: 20, fontWeight: 800, color: '#1f2937', marginBottom: 12 }}>
+            희망하는 상담 시간대 <span style={{ color: '#9ca3af', fontWeight: 700 }}>(선택)</span>
+          </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 10 }}>
             {timePrefs.map((t, i) => (
               <div key={t} style={{
-                height: 60, borderRadius: 14, background: '#fff',
+                height: 60, borderRadius: 14, background: i === 0 ? '#fbe7d6' : '#fff',
                 border: i === 0 ? '2px solid #e07b2a' : '1.5px solid #e5e7eb',
                 display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', padding: '0 4px', textAlign: 'center',
               }}>
-                <span style={{ fontSize: i === 0 ? 17 : 17, fontWeight: i === 0 ? 800 : 700, color: i === 0 ? '#e07b2a' : '#6b7280' }}>{t}</span>
+                <span style={{ fontSize: 17, fontWeight: i === 0 ? 800 : 700, color: i === 0 ? '#e07b2a' : '#6b7280' }}>{t}</span>
               </div>
             ))}
           </div>
         </div>
 
-        {/* 상담 사유 (선택) */}
+        {/* 나누고 싶은 이야기 (선택) */}
         <div>
-          <div style={{ fontSize: 20, fontWeight: 800, color: '#1f2937', marginBottom: 4 }}>어떤 이야기를 나누고 싶으세요?</div>
-          <div style={{ fontSize: 16, color: '#9ca3af', fontWeight: 500, marginBottom: 12 }}>선택 안 하셔도 괜찮아요</div>
+          <div style={{ fontSize: 20, fontWeight: 800, color: '#1f2937', marginBottom: 12 }}>
+            나누고 싶은 이야기 <span style={{ color: '#9ca3af', fontWeight: 700 }}>(선택)</span>
+          </div>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10 }}>
             {reasons.map((r, i) => (
               <div key={r} style={{
