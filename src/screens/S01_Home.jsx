@@ -7,7 +7,7 @@ export default function S01_Home({ navigate, fontMode, setFontMode }) {
   const [s1, s2, s3] = sizes[fontMode] || sizes['보통'];
 
   const quick = [
-    { id: 'S09', icon: <CalendarCheck size={30} color="#1a5fa8" />, title: '상담 신청' },
+    { id: 'S09', icon: <CalendarCheck size={30} color="#1a5fa8" />, title: '상담 예약' },
     { id: 'S11', icon: <Sparkles size={30} color="#1a5fa8" />, title: '오늘의 활동' },
     { id: 'S12', icon: <CalendarHeart size={30} color="#1a5fa8" />, title: '감정 기록' },
   ];

@@ -1,31 +1,33 @@
-import { Smile, Meh, Frown, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Laugh, Smile, Meh, Frown, ChevronLeft, ChevronRight } from 'lucide-react';
 import StatusBar from '../components/StatusBar';
 import BackBtn from '../components/BackBtn';
 
 // 감정 기록: 안부콜을 한 날의 감정이 달력에 남는다.
+// 감정 단계는 안부콜과 동일: 매우 좋아요 / 좋아요 / 보통이에요 / 힘들어요.
 // 하루에 안부콜이 여러 번일 수 있어 → 달력엔 그날의 '대표 감정'만 얼굴로 보여주고,
 // 날짜를 누르면 그날의 안부콜 목록(각각의 감정)이 아래에 펼쳐진다.
 const MOODS = {
-  good: { face: Smile, color: '#1a5fa8', bg: '#e8f1fa', label: '좋음' },
-  soso: { face: Meh, color: '#6b7280', bg: '#f3f4f6', label: '보통' },
-  hard: { face: Frown, color: '#dc2626', bg: '#fde8e8', label: '힘듦' },
+  great: { face: Laugh, color: '#1a5fa8', bg: '#e8f1fa', label: '매우 좋아요' },
+  good: { face: Smile, color: '#1a5fa8', bg: '#e8f1fa', label: '좋아요' },
+  soso: { face: Meh, color: '#6b7280', bg: '#f3f4f6', label: '보통이에요' },
+  hard: { face: Frown, color: '#dc2626', bg: '#fde8e8', label: '힘들어요' },
 };
 
 // day → 그날의 안부콜들 (시간순). 대표 감정은 가장 자주 나온 감정.
 const records = {
-  1: [{ time: '오전 8:40', mood: 'good', trigger: '기상', summary: '잘 주무셨다고 하셨어요.' }],
+  1: [{ time: '오전 8:40', mood: 'great', trigger: '기상', summary: '푹 주무셨다고 하셨어요.' }],
   2: [{ time: '오후 12:10', mood: 'soso', trigger: '식사', summary: '입맛이 없다고 하셨어요.' }],
   4: [
     { time: '오전 8:30', mood: 'good', trigger: '기상', summary: '개운하게 일어나셨어요.' },
-    { time: '오후 6:20', mood: 'good', trigger: '외출 복귀', summary: '경로당 다녀오셨대요.' },
+    { time: '오후 6:20', mood: 'great', trigger: '외출 복귀', summary: '경로당 다녀오셨대요.' },
   ],
   5: [{ time: '오후 9:10', mood: 'hard', trigger: '취침 전', summary: '무릎이 아프다고 하셨어요.' }],
   8: [{ time: '오후 12:30', mood: 'soso', trigger: '식사', summary: '점심 혼자 드셨대요.' }],
   10: [{ time: '오전 8:20', mood: 'good', trigger: '기상', summary: '기분 좋게 시작하셨어요.' }],
   11: [{ time: '오후 3:00', mood: 'hard', trigger: '외출 복귀', summary: '더위에 지치셨다고 해요.' }],
-  13: [{ time: '오후 7:40', mood: 'good', trigger: '외출 복귀', summary: '손주가 다녀갔대요.' }],
+  13: [{ time: '오후 7:40', mood: 'great', trigger: '외출 복귀', summary: '손주가 다녀갔대요.' }],
   14: [
-    { time: '오전 7:10', mood: 'good', trigger: '기상', summary: '오늘도 힘차게 시작하셨어요.' },
+    { time: '오전 7:10', mood: 'great', trigger: '기상', summary: '오늘도 힘차게 시작하셨어요.' },
     { time: '오후 2:30', mood: 'good', trigger: '외출 복귀', summary: '병원 잘 다녀오셨대요.' },
     { time: '오후 8:00', mood: 'soso', trigger: '취침 전', summary: '조금 피곤하다고 하셨어요.' },
   ],

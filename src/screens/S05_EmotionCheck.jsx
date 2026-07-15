@@ -13,13 +13,16 @@ export default function S05_EmotionCheck({ navigate }) {
     <div className="mo-screen" style={{ background: '#f4f5f7', border: '1px solid #cdd2d8' }}>
       <StatusBar time="9:58" />
       <div style={{ flex: 1, display: 'flex', flexDirection: 'column', padding: '44px 44px 56px' }}>
-        <div style={{ textAlign: 'center', marginBottom: 40, paddingRight: 120 }}>
+        <div style={{ textAlign: 'center', marginBottom: 40 }}>
           <div style={{ fontSize: 36, fontWeight: 800, color: '#1f2937', letterSpacing: '-0.03em', lineHeight: 1.3 }}>
-            오늘 기분이<br />어땠나요?
+            지금 기분은<br />어떠신가요?
           </div>
-          <div style={{ fontSize: 18, color: '#6b7280', marginTop: 12 }}>편하게 골라주세요</div>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, marginTop: 14, color: '#6b7280' }}>
+            <Mic size={20} color="#6b7280" />
+            <span style={{ fontSize: 18, fontWeight: 500 }}>"좋아요"라고 말로 답해도 돼요</span>
+          </div>
         </div>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 18, flex: 1, justifyContent: 'center' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 18, flex: 1, justifyContent: 'center', paddingBottom: 24 }}>
           {emotions.map(({ icon, label, bg, target, border, color, bold }) => (
             <div
               key={label}
@@ -36,10 +39,6 @@ export default function S05_EmotionCheck({ navigate }) {
               <span style={{ fontSize: 26, fontWeight: bold ? 800 : 700, color }}>{label}</span>
             </div>
           ))}
-        </div>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, marginTop: 24, color: '#6b7280' }}>
-          <Mic size={20} color="#6b7280" />
-          <span style={{ fontSize: 17, fontWeight: 500 }}>"좋아요"라고 말로 답해도 돼요</span>
         </div>
       </div>
     </div>

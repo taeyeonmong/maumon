@@ -14,7 +14,7 @@ export default function S09_BookingConfirm({ navigate }) {
       <div style={{ flex: 1, minHeight: 0, display: 'flex', flexDirection: 'column', padding: '18px 32px 32px', gap: 20 }}>
         <div style={{ flex: 'none', display: 'flex', alignItems: 'center', gap: 16 }}>
           <BackBtn onClick={() => navigate('S01')} />
-          <span style={{ fontSize: 26, fontWeight: 800, color: '#1f2937', letterSpacing: '-0.02em' }}>상담 신청 현황</span>
+          <span style={{ fontSize: 26, fontWeight: 800, color: '#1f2937', letterSpacing: '-0.02em' }}>상담 예약</span>
         </div>
 
         {/* 탭: 상담 신청 / 상담 일정 */}
