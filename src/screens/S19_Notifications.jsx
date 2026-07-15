@@ -9,6 +9,7 @@ const notifications = [
     body: '방금 외출 다녀오셨나요? 날씨가 많이 덥죠? 잠깐 대화 나눠볼까요?',
     time: '오후 2:30',
     unread: true,
+    target: 'S00',
   },
   {
     id: 2,
@@ -16,6 +17,7 @@ const notifications = [
     body: '일어나셨나요? 오늘도 힘찬 하루 될 수 있도록 이야기 나눠봐요!',
     time: '오전 7:10',
     unread: true,
+    target: 'S00',
   },
   {
     id: 3,
@@ -23,6 +25,7 @@ const notifications = [
     body: '마음온 상담사가 곧 휴대폰으로 연락드려 일정을 잡아드릴 예정이에요.',
     time: '어제',
     unread: false,
+    target: 'S09',
   },
 ];
 
@@ -56,9 +59,10 @@ export default function S19_Notifications({ navigate }) {
 
         {/* Notification list */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 12, flex: 1 }}>
-          {notifications.map(({ id, title, body, time, unread }) => (
+          {notifications.map(({ id, title, body, time, unread, target }) => (
             <div
               key={id}
+              onClick={() => target && navigate(target)}
               style={{
                 background: '#fff',
                 border: `1.5px solid ${unread ? '#cfe2f5' : '#e5e7eb'}`,

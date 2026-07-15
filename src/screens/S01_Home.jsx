@@ -42,9 +42,9 @@ export default function S01_Home({ navigate, fontMode, setFontMode }) {
           </span>
         </div>
 
-        {/* 안부콜 히어로 카드 — 캐릭터 강조, 탭하면 대화 시작 (센서 정보는 노출하지 않음) */}
+        {/* 안부콜 히어로 카드 — 캐릭터 강조, 탭하면 바로 대화 연결 (확인 페이지 없이) */}
         <div
-          onClick={() => navigate('S00')}
+          onClick={() => navigate('S02')}
           style={{
             flex: 1, minHeight: 0, cursor: 'pointer', position: 'relative', overflow: 'hidden',
             background: 'linear-gradient(160deg, #1a5fa8 0%, #14467a 100%)',
